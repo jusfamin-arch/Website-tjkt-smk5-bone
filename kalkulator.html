@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kalkulator jusfaming</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input {
+            width: 250px;
+            height: 50px;
+            font-size: 25px;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 60px;
+            height: 60px;
+            margin: 3px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Kalkulator</h1>
+
+    <input id="layar" value="0" readonly>
+
+    <br>
+
+    <button onclick="angka('7')">7</button>
+    <button onclick="angka('8')">8</button>
+    <button onclick="angka('9')">9</button>
+    <button onclick="angka('+')">+</button>
+
+    <br>
+
+    <button onclick="angka('4')">4</button>
+    <button onclick="angka('5')">5</button>
+    <button onclick="angka('6')">6</button>
+    <button onclick="angka('-')">-</button>
+
+    <br>
+
+    <button onclick="angka('1')">1</button>
+    <button onclick="angka('2')">2</button>
+    <button onclick="angka('3')">3</button>
+    <button onclick="angka('*')">×</button>
+
+    <br>
+
+    <button onclick="angka('0')">0</button>
+    <button onclick="hapus()">C</button>
+    <button onclick="hitung()">=</button>
+    <button onclick="angka('/')">÷</button>
+
+
+<script>
+
+function angka(nilai) {
+    let layar = document.getElementById("layar");
+
+    if (layar.value == "0") {
+        layar.value = nilai;
+    } else {
+        layar.value = layar.value + nilai;
+    }
+}
+
+function hapus() {
+    document.getElementById("layar").value = "0";
+}
+
+function hitung() {
+    let layar = document.getElementById("layar");
+
+    try {
+        layar.value = eval(layar.value);
+    } catch {
+        layar.value = "Error";
+    }
+}
+
+</script>
+
+</body>
+</html>
