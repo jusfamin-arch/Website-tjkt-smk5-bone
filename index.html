@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="id"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel TJKT XI - SMKN 5 Bone</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+  scroll-behavior: smooth;
+}
+body { background: #f0f8ff; color: #163047; }
+
+/* ANIMASI HATI MELAYANG */
+.floating-hearts {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  overflow: hidden; pointer-events: none; z-index: 0;
+}
+.floating-hearts span {
+  position: absolute; bottom: -50px; color: #ff69b4; font-size: 25px;
+  animation: heartFloat 10s linear infinite; opacity: 0.7;
+}
+.floating-hearts span:nth-child(1) { left: 10%; animation-duration: 8s; }
+.floating-hearts span:nth-child(2) { left: 25%; animation-duration: 12s; animation-delay: 2s; }
+.floating-hearts span:nth-child(3) { left: 40%; animation-duration: 9s; animation-delay: 1s; }
+.floating-hearts span:nth-child(4) { left: 60%; animation-duration: 11s; animation-delay: 3s; }
+.floating-hearts span:nth-child(5) { left: 75%; animation-duration: 7s; animation-delay: 2s; }
+.floating-hearts span:nth-child(6) { left: 90%; animation-duration: 10s; animation-delay: 4s; }
+@keyframes heartFloat {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  20% { opacity: 0.7; }
+  100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+
+/* ANIMASI SALJU */
+.snow-container {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  overflow: hidden; pointer-events: none; z-index: 0;
+}
+.snow-container span {
+  position: absolute; top: -20px; color: white; font-size: 20px;
+  text-shadow: 0 0 10px #00bfff; animation: snowFall linear infinite;
+}
+.snow-container span:nth-child(1) { left: 5%; animation-duration: 8s; }
+.snow-container span:nth-child(2) { left: 15%; animation-duration: 10s; animation-delay: 2s; }
+.snow-container span:nth-child(3) { left: 25%; animation-duration: 7s; animation-delay: 1s; }
+.snow-container span:nth-child(4) { left: 35%; animation-duration: 12s; }
+.snow-container span:nth-child(5) { left: 45%; animation-duration: 9s; animation-delay: 3s; }
+.snow-container span:nth-child(6) { left: 55%; animation-duration: 11s; }
+.snow-container span:nth-child(7) { left: 65%; animation-duration: 8s; animation-delay: 2s; }
+.snow-container span:nth-child(8) { left: 75%; animation-duration: 10s; }
+.snow-container span:nth-child(9) { left: 85%; animation-duration: 7s; animation-delay: 1s; }
+.snow-container span:nth-child(10) { left: 95%; animation-duration: 12s; }
+@keyframes snowFall {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(110vh) translateX(50px); opacity: 0; }
+}
+
+/* ANIMASI KILATAN PETIR */
+.lightning-flash {
+  position: fixed; inset: 0; background: rgba(180, 220, 255, 0.8);
+  opacity: 0; pointer-events: none; z-index: 999;
+  animation: lightning 8s infinite;
+}
+.lightning-flash::before {
+  content: ""; position: absolute; top: 0; right: 20%;
+  width: 100px; height: 70vh; background: white;
+  clip-path: polygon(50% 0, 100% 0, 40% 45%, 75% 45%, 0 100%, 30% 55%, 0 55%);
+  filter: drop-shadow(0 0 20px #00bfff);
+}
+@keyframes lightning {
+  0%, 90%, 100% { opacity: 0; }
+  91% { opacity: 0.8; }
+  92% { opacity: 0; }
+  93% { opacity: 0.6; }
+  94% { opacity: 0; }
+}
+
+/* KONTEN DI DEPAN ANIMASI */
+.hero, section, footer { position: relative; z-index: 1; }
+
+/* NAVBAR */
+header {
+  position: fixed; top: 0; width: 100%; padding: 18px 7%;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(255,255,255,.9); backdrop-filter: blur(15px);
+  z-index: 1000; box-shadow: 0 3px 20px #0001;
+}
+.logo { font-size: 22px; font-weight: 900; color: #0085bd; }
+nav a {
+  text-decoration: none; margin-left: 20px; color: #163047;
+  font-weight: 600; transition: .3s;
+}
+nav a:hover { color: #00a9d6; }
+
+/* HERO */
+.hero {
+  min-height: 700px; padding: 150px 8% 80px; display: flex;
+  align-items: center; color: white;
+  background: linear-gradient(90deg,#002c4bf0,#004e7070),
+  url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover;
+}
+.hero-content { max-width: 700px; animation: muncul 1.2s ease; }
+.hero h1 { font-size: clamp(40px,7vw,75px); line-height: 1.1; margin-bottom: 25px; }
+.hero p { font-size: 18px; line-height: 1.8; }
+.btn {
+  display: inline-block; background: linear-gradient(45deg,#00a9d6,#007bb5);
+  padding: 15px 30px; margin-top: 25px; border-radius: 30px; color: white;
+  text-decoration: none; font-weight: bold; transition: .3s;
+  box-shadow: 0 5px 20px #00a9d655;
+}
+.btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px #00a9d677; }
+
+/* SECTION */
+section { padding: 90px 7%; }
+.heading { text-align: center; margin-bottom: 50px; }
+.heading h2 { font-size: clamp(28px,5vw,40px); color: #006b9d; }
+.heading p { color: #6b8294; margin-top: 12px; }
+
+/* ABOUT */
+.about {
+  text-align: center; max-width: 850px; margin: auto; line-height: 2;
+  font-size: 17px; background: white; padding: 35px; border-radius: 25px;
+  box-shadow: 0 8px 30px #16304710;
+}
+
+/* MEMBERS */
+.members { display: grid; grid-template-columns: repeat(auto-fit,minmax(210px,1fr)); gap: 25px; }
+.card {
+  background: white; border-radius: 22px; overflow: hidden; text-align: center;
+  box-shadow: 0 8px 25px #16304712; transition: .4s; padding-bottom: 20px;
+}
+.card:hover { transform: translateY(-12px); box-shadow: 0 15px 35px #0085bd30; }
+.card img { width: 100%; height: 250px; object-fit: cover; background: #dcebf3; }
+.card h3 { margin-top: 18px; color: #075b83; }
+.card p { padding: 8px; color: #72899b; }
+
+/* MUSIC */
+.music-section { background: linear-gradient(135deg,#003b59,#007eaa); color: white; text-align: center; }
+.music-section .heading h2 { color: white; }
+.music-section .heading p { color: #d0e9f5; }
+.music-box {
+  max-width: 600px; margin: auto; padding: 35px; border-radius: 25px;
+  background: rgba(255,255,255,.13); backdrop-filter: blur(15px);
+  box-shadow: 0 10px 30px #0002;
+}
+.music-icon { font-size: 65px; margin-bottom: 15px; animation: putar 5s linear infinite; }
+.music-box h3 { margin-bottom: 15px; }
+audio { width: 100%; margin: 20px 0; }
+.music-link {
+  display: inline-block; padding: 13px 25px; background: white; color: #006b9d;
+  border-radius: 30px; text-decoration: none; font-weight: bold; transition: .3s;
+}
+.music-link:hover { transform: scale(1.05); background: #bceeff; }
+
+/* GALLERY */
+.gallery {
+  display: flex; gap: 20px; overflow-x: auto; padding: 15px 5px 25px;
+  scroll-snap-type: x mandatory;
+}
+.gallery img {
+  width: 280px; height: 230px; object-fit: cover; border-radius: 20px;
+  flex-shrink: 0; scroll-snap-align: start; transition: .4s;
+  box-shadow: 0 5px 20px #0002;
+}
+.gallery img:hover { transform: scale(1.05); }
+
+/* UPLOAD */
+.upload {
+  text-align: center; background: white; border-radius: 25px; padding: 35px;
+  margin-top: 30px; box-shadow: 0 8px 25px #0001;
+}
+.upload h3 { color: #006b9d; margin-bottom: 10px; }
+input[type=file] { margin-top: 20px; max-width: 100%; padding: 10px; }
+
+/* FOOTER */
+footer { text-align: center; padding: 45px 20px; background: #003b59; color: white; line-height: 2; }
+footer h3 { font-size: 25px; margin-bottom: 10px; }
+footer p { color: #c8e5f3; }
+
+/* ANIMATION */
+@keyframes muncul {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes putar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* MOBILE */
+@media(max-width:600px) {
+  header { padding: 15px 4%; flex-wrap: wrap; }
+  .logo { font-size: 16px; }
+  nav a { font-size: 11px; margin-left: 7px; }
+  .hero { min-height: 580px; }
+  .hero p { font-size: 15px; }
+  section { padding: 70px 5%; }
+  .about { padding: 25px; }
+  .music-box { padding: 25px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ANIMASI HATI -->
+<div class="floating-hearts">
+  <span>💖</span><span>💕</span><span>💗</span>
+  <span>💖</span><span>💘</span><span>💕</span>
+</div>
+
+<!-- ANIMASI SALJU -->
+<div class="snow-container">
+  <span>❄</span><span>❄</span><span>❄</span><span>❄</span><span>❄</span>
+  <span>❄</span><span>❄</span><span>❄</span><span>❄</span><span>❄</span>
+</div>
+
+<!-- ANIMASI PETIR -->
+<div class="lightning-flash"></div>
+
+<!-- NAVBAR -->
+<header>
+  <div class="logo">🌊 TRAVEL TJKT XI</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#struktur">Struktur</a>
+    <a href="#musik">Musik</a>
+    <a href="#galeri">Galeri</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero" id="home">
+  <div class="hero-content">
+    <h1>Explore Our Class Adventure</h1>
+    <p>
+      Selamat datang di website JURUSAN<span style="background-color: initial;">&nbsp;TJKT XI SMKN 5 Bone.
+      Satu kelas, satu keluarga, sejuta cerita dan kenangan yang tidak akan pernah terlupakan.</span></p>
+    <a href="#struktur" class="btn">Jelajahi Kelas →</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="heading">
+    <h2>Welcome To Our Class</h2>
+    <p>Perjalanan kebersamaan keluarga TJKT XI</p>
+  </div>
+  <div class="about">
+    <p>
+      Kami adalah keluarga kelas XI Teknik Jaringan Komputer dan Telekomunikasi (TJKT) dari SMKN 5 Bone.
+      Bersama-sama belajar, berkembang, berkarya dan menciptakan kenangan yang tidak terlupakan.
+      Bukan sekadar teman sekelas, tetapi keluarga yang dipertemukan dalam satu perjalanan.
+    </p>
+  </div>
+</section>
+
+<!-- STRUKTUR -->
+<section id="struktur">
+  <div class="heading">
+    <h2>Struktur Organisasi Kelas</h2>
+    <p>Kenali para pemimpin dan pengurus kelas kami</p>
+  </div>
+  <div class="members">
+    <div class="card">
+      <img src="https://placehold.co/400x400?text=Wali+Kelas" alt="Wali kelas">
+      <h3>Uni Kurnikasih</h3><p>Wali Kelas</p>
+    </div>
+    <div class="card">
+      <img src="https://placehold.co/400x400?text=Ketua" alt="Ketua">
+      <h3>Akbar Saenal</h3><p>Ketua Kelas</p>
+    </div>
+    <div class="card">
+      <img src="https://placehold.co/400x400?text=Wakil" alt="Wakil">
+      <h3>Adam</h3><p>Wakil Ketua</p>
+    </div>
+    <div class="card">
+      <img src="https://placehold.co/400x400?text=Bendahara" alt="Bendahara">
+      <h3>Ardayanti</h3><p>Bendahara</p>
+    </div>
+    <div class="card">
+      <img src="https://placehold.co/400x400?text=Sekretaris" alt="Sekretaris">
+      <h3>St Nuhalizah</h3><p>Sekretaris</p>
+    </div>
+  </div>
+</section>
+
+<!-- MUSIC -->
+<section class="music-section" id="musik">
+  <div class="heading">
+    <h2>🎵 Our Class Music</h2>
+    <p>Musik untuk menemani perjalanan kenangan kita</p>
+  </div>
+  <div class="music-box">
+    <div class="music-icon">🎧</div>
+    <h3>Masa school of TJKT XI</h3>
+    <p>Putar musik dan nikmati setiap momen kebersamaan&nbsp; keluarga&nbsp; TJKT XI.</p>
+    <audio controls="">
+      <source src="ssstik.io_1794183274913.mp3" type="audio/mpeg">
+      Browser kamu tidak mendukung pemutar audio.
+    </audio>
+    <p style="font-size:13px;margin-bottom:20px;">Klik tombol play untuk memutar musik.</p>
+    <a href="https://www.youtube.com/results?search_query=lagu+persahabatan" target="_blank" class="music-link">▶ Dengarkan Musik di YouTube</a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="galeri">
+  <div class="heading">
+    <h2>Our Memories 📸</h2>
+    <p>Galeri foto keluarga TJKT XI</p>
+  </div>
+  <div class="gallery" id="gallery">
+    <img src="IMG-20261012-WA0074.jpg" alt="Foto kelas">
+    <img src="IMG-20260821-WA0026(1).jpg" alt="Kebersamaan">
+    <img src="IMG-20261012-WA0077.jpg" alt="Teman kelas">
+    <img src="IMG-20261012-WA0076.jpg" alt="Kenangan kelas">
+    <img src="IMG-20260913-WA0185.jpg" alt="Foto bersama">
+  </div>
+  <div class="upload">
+    <h3>📷 Tambahkan Kenangan Baru</h3>
+    <p>Upload foto kenangan&nbsp; bersama keluarga TJKT XI di sini.</p>
+    <input type="file" id="uploadFoto" accept="image/*" multiple="">
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <h3>🌊 TRAVEL TJKT XI</h3>
+  <p>SMKN 5 Bone | Teknik Jaringan Komputer dan Telekomunikasi</p>
+  <p>One Class, One Family, Endless Memories.</p>
+  <p>© 2026/2007 TJKT XI | All Memories Reserved</p>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+const upload = document.getElementById("uploadFoto");
+const gallery = document.getElementById("gallery");
+
+upload.addEventListener("change", function() {
+  for (const file of this.files) {
+    if (!file.type.startsWith("image/")) continue;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = document.createElement("img");
+      img.src = e.target.result;
+      img.alt = "Foto anggota TJKT XI";
+      gallery.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+  }
+});
+</script>
+
+
+
+</body></html>
